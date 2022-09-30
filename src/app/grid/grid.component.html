@@ -1,0 +1,43 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <!-- Codigo Column -->
+    <ng-container matColumnDef="Codigo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Código da Ação</th>
+      <td mat-cell *matCellDef="let row">{{row.symbol}}</td>
+    </ng-container>
+
+    <!-- Cotacao Atual Column -->
+    <ng-container matColumnDef="CotacaoAtual">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Cotação Atual</th>
+      <td mat-cell *matCellDef="let row">R$ {{row.price}}</td>
+    </ng-container>
+
+    <!-- Cotacao Atual Column -->
+    <ng-container matColumnDef="NumeroDeCotas">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Número de Cotas</th>
+      <td mat-cell *matCellDef="let row">{{row.numeroCotas}}</td>
+    </ng-container>
+
+    <!-- Cotacao Atual Column -->
+    <ng-container matColumnDef="PrecoMedio">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Preço Médio</th>
+      <td mat-cell *matCellDef="let row">R$ {{row.precoMedio}}</td>
+    </ng-container>
+
+    <!-- Cotacao Atual Column -->
+    <ng-container matColumnDef="Variacao">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Rentabilidade</th>
+      <td mat-cell *matCellDef="let row">{{row.variacao}}%</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data?.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
